@@ -15,23 +15,31 @@ useEffect(() => {
     .catch(err =>{
       console.log(err)
     });
-   },[places]);
+   },[]);
 
   return (
-    <div>
+<div>
     <h1 className="Places-header">Places Page</h1>
-      <table>
+<table>
   <tr>
     <th>Busines Id</th>
-  </tr>
-  <tr>
     <td>Business Name</td>
-  </tr>
-  <tr>
     <td>Website</td>
+    <td>Address</td>
   </tr>
-    </table>
-    </div>
+
+  {places && places.map(newPlaces=>{
+   return <tr key={newPlaces}>
+           <th>{newPlaces.id}</th>
+           <td>{newPlaces.name}</td>
+           <td>{newPlaces.website_url}</td>
+           <td>{newPlaces.address}</td>
+         </tr>
+   
+})}
+ 
+   </table>
+</div>
   );
 }
 
