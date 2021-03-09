@@ -9,7 +9,7 @@ const Handleclick = () => {
        }
   return (
     <div>
-      <h1 onClick={Handleclick}>Go Back to Places</h1>
+      <h1 className="Back-Page" onClick={Handleclick}>Go Back to Places</h1>
      
     </div>
   );

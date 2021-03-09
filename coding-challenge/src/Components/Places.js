@@ -20,7 +20,7 @@ useEffect(() => {
    },[]);
 
   
-const Handleclick = (places) =>{
+const Handleclick = () =>{
   history.push(`/Details/${places.id}`)
 }
   return (
@@ -37,7 +37,7 @@ const Handleclick = (places) =>{
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td onClick={Handleclick}>{newPlaces.name}</td>
+           <td  className="Name-Click"onClick={Handleclick}>{newPlaces.name}</td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>

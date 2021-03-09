@@ -16,3 +16,10 @@ table {
   width: 100%;
 }
 
+.Name-Click{
+  cursor: pointer;
+}
+
+.Back-Page{
+  cursor: pointer;
+}
