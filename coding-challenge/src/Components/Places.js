@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 
 function Places() {
 const [places,setPlaces] = useState([])
+const history = useHistory();
 
 useEffect(() => {
     const url = "https://6025865136244d001797c552.mockapi.io/api/v1/places";
@@ -18,11 +19,10 @@ useEffect(() => {
     });
    },[]);
 
-   const history = useHistory();
-
-   const Handleclick = () =>{
-     history.push(`/Details/${places.name}`)
-   }
+  
+const Handleclick = (places) =>{
+  history.push(`/Details/${places.id}`)
+}
   return (
 <div>
     <h1 className="Places-header">Places Page</h1>
@@ -43,7 +43,6 @@ useEffect(() => {
          </tr>
    
 })}
- 
   </table>
 </div>
   );
