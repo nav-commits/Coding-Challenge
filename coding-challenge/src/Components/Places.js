@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 function Places() {
 const [places,setPlaces] = useState([])
@@ -17,28 +18,33 @@ useEffect(() => {
     });
    },[]);
 
+   const history = useHistory();
+
+   const Handleclick = () =>{
+     history.push(`/Details/${places.name}`)
+   }
   return (
 <div>
     <h1 className="Places-header">Places Page</h1>
-<table>
+<table> 
   <tr>
     <th>Busines Id</th>
     <td>Business Name</td>
     <td>Website</td>
     <td>Address</td>
-  </tr>
+  </tr> 
 
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td>{newPlaces.name}</td>
+           <td onClick={Handleclick}>{newPlaces.name}</td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>
    
 })}
  
-   </table>
+  </table>
 </div>
   );
 }
