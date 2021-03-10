@@ -1,11 +1,11 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
+
 
 function Places() {
 const [places,setPlaces] = useState([])
-const history = useHistory();
+
 
 useEffect(() => {
     const url = "https://6025865136244d001797c552.mockapi.io/api/v1/places";
@@ -20,9 +20,7 @@ useEffect(() => {
    },[]);
 
   
-const Handleclick = () =>{
-  history.push(`/Details/${places.id}`)
-}
+
   return (
 <div>
     <h1 className="Places-header">Places Page</h1>
@@ -37,7 +35,7 @@ const Handleclick = () =>{
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td  className="Name-Click"onClick={Handleclick}>{newPlaces.name}</td>
+           <td className="Name-Click"><a href= {`/Details/${newPlaces.id}`}>{newPlaces.name}</a></td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>
