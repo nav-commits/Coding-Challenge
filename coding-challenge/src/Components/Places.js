@@ -5,8 +5,6 @@ import axios from 'axios';
 
 function Places() {
 const [places,setPlaces] = useState([])
-
-
 useEffect(() => {
     const url = "https://6025865136244d001797c552.mockapi.io/api/v1/places";
     axios.get(url)
@@ -19,17 +17,16 @@ useEffect(() => {
     });
    },[]);
 
-  
-
   return (
-<div>
+ <div>
     <h1 className="Places-header">Places Page</h1>
-<table> 
+  
+   <table> 
   <tr>
     <th>Busines Id</th>
-    <td>Business Name</td>
-    <td>Website</td>
-    <td>Address</td>
+    <th>Business Name</th>
+    <th>Website</th>
+    <th>Address</th>
   </tr> 
 
   {places && places.map(newPlaces=>{
@@ -42,7 +39,8 @@ useEffect(() => {
    
 })}
   </table>
-</div>
+  
+ </div>
   );
 }
 
