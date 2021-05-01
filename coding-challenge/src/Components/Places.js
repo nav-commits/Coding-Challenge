@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {PlacesContext} from './PlacesContext'
 
 const Places =()=> {
-const places = useContext(PlacesContext)
+const [places] =  useContext(PlacesContext)
 useEffect(() => {
   console.log(places) 
    },[places]);

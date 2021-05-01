@@ -17,7 +17,7 @@ axios.get(url)
 });
 
     return (
-        <PlacesContext.Provider value={{places,setPlaces}}>
+        <PlacesContext.Provider value={[places,setPlaces]}>
           {props.children}
         </PlacesContext.Provider>
  
