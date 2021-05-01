@@ -1,20 +1,13 @@
 import '../App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useContext } from 'react';
+import {Link} from "react-router-dom";
+import {PlacesContext} from './PlacesContext'
 
-function Places() {
-const [places,setPlaces] = useState([])
+const Places =()=> {
+const places = useContext(PlacesContext)
 useEffect(() => {
-    const url = "https://6025865136244d001797c552.mockapi.io/api/v1/places";
-    axios.get(url)
-    .then(response =>{
-      setPlaces(response.data)
-      console.log(response);
-    })
-    .catch(err =>{
-      console.log(err)
-    });
-   },[]);
+  console.log(places) 
+   },[places]);
 
   return (
  <div>
@@ -31,7 +24,7 @@ useEffect(() => {
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td className="Name-Click"><a href= {`/Details/${newPlaces.id}`}>{newPlaces.name}</a></td>
+           <td className="Name-Click"><Link to={`/Details/${newPlaces.id}`}>{newPlaces.name}</Link></td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>
