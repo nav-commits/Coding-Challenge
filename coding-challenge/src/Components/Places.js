@@ -2,13 +2,14 @@ import '../App.css';
 import React, { useEffect, useContext } from 'react';
 import {Link} from "react-router-dom";
 import {PlacesContext} from './PlacesContext'
+import {useHistory} from 'react-router-dom'
 
 const Places =()=> {
 const [places] =  useContext(PlacesContext)
 useEffect(() => {
   console.log(places) 
    },[places]);
-
+const history = useHistory()
   return (
  <div>
     <h1 className="Places-header">Places Page</h1>
@@ -24,7 +25,15 @@ useEffect(() => {
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td className="Name-Click"><Link to={`/Details/${newPlaces.id}`}>{newPlaces.name}</Link></td>
+           <td className="Name-Click"><Link onClick={()=>{
+                          history.push(`/Details/${newPlaces.id}`,
+                         {state:{website: newPlaces.website_url,
+                          logo: newPlaces.logo_url,
+                          address: newPlaces.address,
+                          name: newPlaces.name,
+                          hours: newPlaces.hours
+                         }});
+                         }} >{newPlaces.name}</Link></td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>
