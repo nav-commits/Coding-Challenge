@@ -25,15 +25,15 @@ const history = useHistory()
   {places && places.map(newPlaces=>{
    return <tr key={newPlaces}>
            <th>{newPlaces.id}</th>
-           <td className="Name-Click"><Link onClick={()=>{
-                          history.push(`/Details/${newPlaces.id}`,
-                         {state:{website: newPlaces.website_url,
-                          logo: newPlaces.logo_url,
-                          address: newPlaces.address,
-                          name: newPlaces.name,
-                          hours: newPlaces.hours
-                         }});
-                         }} >{newPlaces.name}</Link></td>
+           <td className="Name-Click"  onClick={()=>{
+            history.push(`/Details/${newPlaces.id}`,
+            {website: newPlaces.website_url,
+            logo: newPlaces.logo_url,
+            address: newPlaces.address,
+            name: newPlaces.name,
+            hours: newPlaces.hours
+         });
+        }} ><Link>{newPlaces.name}</Link></td>
            <td>{newPlaces.website_url}</td>
            <td>{newPlaces.address}</td>
          </tr>
@@ -44,5 +44,6 @@ const history = useHistory()
  </div>
   );
 }
+
 
 export default Places;
